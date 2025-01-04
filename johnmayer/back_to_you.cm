@@ -1,4 +1,5 @@
 key A
+[hammond]
 
 #i
 A A F#m7 F#m7
@@ -16,7 +17,7 @@ Back to you
 #v
 E F#m7.. D.. E F#m7.. D..
 Yeah, I am so good at forget...
-E F#m7.. C#m. D. D.. Bm7.. E
+E F#m7.. C#m.. D.. Bm7.. E
 
 #c
 instrumental
@@ -43,8 +44,8 @@ Guitar Solo
 Bm7 E F#m7 A
 
 #c
-Back to me...
-:
+[no organ] Back to me...
+[no organ]
 
 #s x30
 F#m7
