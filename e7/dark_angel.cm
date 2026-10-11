@@ -1,0 +1,39 @@
+key E
+tempo: 129
+
+#i x2
+G#m.. B.. E.. C#.. G#m.. B.. E.. C#m..
+synth
+
+#v x3
+G#m.. B.. E.. C#.. G#m.. B.. E.. C#m..
+no synth
+
+#c x3
+A.. F#m.. E.. C#m..
+synth
+
+#v x4
+1st hard synth, rest soft
+
+#c x3
+
+#v
+synth
+
+#b x4
+C# D#m B D#m.. B..
+no synth
+
+#b
+G#m G#m
+no synth
+
+#v x4
+G#m.. B.. E.. C#m..
+no synth
+
+#c x3
+
+#v x4
+synth 
