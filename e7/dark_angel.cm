@@ -3,23 +3,29 @@ tempo: 129
 
 #i x2
 G#m.. B.. E.. C#.. G#m.. B.. E.. C#m..
-synth
+:_C# _ _F#D# _#C _BC# _B 
+synth1
 
 #v x3
 G#m.. B.. E.. C#.. G#m.. B.. E.. C#m..
-no synth
+:1,2 no synth
+3:_F#D#F# _D# _C#BC#B _C#BG#F# _G#
+synth2
 
 #c x3
 A.. F#m.. E.. C#m..
+:_A _C# _B _C#
 synth
 
 #v x4
-1st hard synth, rest soft
+:1 synth1
+:2 no synth
+:3,4: synth2
 
 #c x3
 
 #v
-synth
+:synth1
 
 #b x4
 C# D#m B D#m.. B..
@@ -36,4 +42,4 @@ no synth
 #c x3
 
 #v x4
-synth 
+synth1
