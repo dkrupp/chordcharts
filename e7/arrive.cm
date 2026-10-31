@@ -1,45 +1,43 @@
-key E
-tempo: 129
-
-#i x2
-G#m.. B.. E.. C#.. G#m.. B.. E.. C#m..
-:_C# _ _F#D# _#C _BC# _B 
-synth1
-
-#v x3
-G#m.. B.. E.. C#.. G#m.. B.. E.. C#m..
-:1,2 no synth
-3:_F#D#F# _D# _C#BC#B _C#BG#F# _G#
-synth2
-
-#c x3
-A.. F#m.. E.. C#m..
-:_A _C# _B _C#
-synth
+key Gb
+tempo 126
 
 #v x4
-:1 synth1
-:2 no synth
-:3,4: synth2
+Cb Ebm Gb Gb
+Yelling at the world...
+#c
+Dbm Abm Fb Cb
+E Eb _Dd E Eb _Ab E Eb _Ab Gb Ab _Db
+Dbm Abm Fb Cb 
+Gb Ab _Dd E Eb _Ab E Eb _Ab Gb Ab _Db
+Dbm Abm Fb Gb
+Gb Ab _Dd E Eb _Ab E Eb _Ab Gb Ab _Bb B
+Gb 
+_Db Db+1
+#v x4
+Cb Ebm Gb Gb
+Maybe we are meant to...
 
-#c x3
-
-#v
-:synth1
-
-#b x4
-C# D#m B D#m.. B..
-no synth
+#c
+Dbm Abm Fb Cb 
+Dbm Abm Fb Cb 
+Dbm Abm Fb Gb
+Gb  Gb  Gb Gb
+Gb
+emelkedik
 
 #b
-G#m G#m
-no synth
+
+Abm Abm Abm Abm
+Cb Cb   Abm Abm
+Cb Cb   Gb  Gb
+Gb Gb
 
 #v x4
-G#m.. B.. E.. C#m..
-no synth
 
-#c x3
+#c
+Dbm Abm Fb Cb 
+Dbm Abm Fb Cb 
+Dbm Abm Fb Gbsus4
+Gb  Gb  Gb Gb
+emelkedik
 
-#v x4
-synth1
