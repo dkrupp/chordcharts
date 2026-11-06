@@ -1,31 +1,36 @@
 key C
 tempo 113
+
 #c
 C C Bb F
 EP & organ
 C C Bb F
 Cm Cm
 drums/guitar join
+
 #v
 C Am C C
 C F  G G
 choir acc.
 C Am C C
 C F  G F
+
 #c
 String synth
 :
 :
 :
 #v
+
 #c
 C C Bb F
 C C Bb F
+
 #s x2
 C Bb F C
 Guitar solo/string synth acc.
 
-#c x2
+#o x2
 C Bb 
 You and me we're meant to be
 F C
@@ -38,7 +43,7 @@ Don't you know that Rome wasn't built in a day
 #s x2
 :synth solo
 
-#c
+#o
 C Bb 
 You and me we're meant to be
 F C
@@ -47,4 +52,3 @@ C Bb
 One fine day we'll fly away
 F C
 Don't you know that Rome wasn't built in a day
-
