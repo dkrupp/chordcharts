@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds one-page, two-column PDFs from all .cm files into ./pdf
+# Builds one-page, two-column PDF and HTML charts from all .cm files into ./dist/{pdf,html}
 set -euo pipefail
 
 cd "$(dirname "$0")"
@@ -14,4 +14,4 @@ fi
 export CHROME_PATH
 
 (cd .github/scripts && npm install --no-audit --no-fund --silent)
-node .github/scripts/build-pdfs.mjs . pdf
+node .github/scripts/build-pdfs.mjs . dist

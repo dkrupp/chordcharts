@@ -1,4 +1,4 @@
-name: Build chord chart PDFs
+name: Build chord chart PDFs and HTML
 
 on:
   push:
@@ -20,14 +20,20 @@ jobs:
         working-directory: .github/scripts
         run: npm install --no-audit --no-fund
 
-      - name: Render .cm files to one-page, two-column PDFs
+      - name: Render .cm files to one-page, two-column PDF and HTML charts
         env:
           # Google Chrome is preinstalled on GitHub's ubuntu runners
           CHROME_PATH: /usr/bin/google-chrome
-        run: node .github/scripts/build-pdfs.mjs . pdf
+        run: node .github/scripts/build-pdfs.mjs . dist
 
       - uses: actions/upload-artifact@v4
         with:
           name: chord-charts-pdf
-          path: pdf/*.pdf
+          path: dist/pdf/*.pdf
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chord-charts-html
+          path: dist/html/*.html
           if-no-files-found: error
