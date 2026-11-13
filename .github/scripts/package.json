@@ -1,0 +1,11 @@
+{
+  "name": "chordcharts-pdf-builder",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "chord-mark": "^0.18.0",
+    "chord-mark-themes": "^0.18.0",
+    "puppeteer-core": "^25.0.0",
+    "sass": "^1.80.0"
+  }
+}
