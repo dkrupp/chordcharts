@@ -70,6 +70,9 @@ html, body { margin: 0; padding: 0; }
 .songHeader h1 { font-family: sans-serif; font-size: 1.4em; margin: 0; }
 .songHeader h2 { font-family: sans-serif; font-size: 0.9em; font-weight: normal; margin: 0; color: #666; }
 .cmLine, .cmChordLyricLine { break-inside: avoid; }
+/* Lines never wrap; fitFontSize() rejects font sizes where a line overflows its column. */
+#song .cmLine, #song .cmLine * { white-space: pre; }
+#song .cmChordLyricLine { flex-wrap: nowrap; }
 </style></head>
 <body class="cmTheme-print"><div id="page">
 <div class="songHeader"><h1>${escapeHtml(title)}</h1><h2>${escapeHtml(artist)}</h2></div>
@@ -78,14 +81,19 @@ html, body { margin: 0; padding: 0; }
 }
 
 // Binary-searches the largest font size (0.25px steps) for which the content
-// fits into the two columns of the page without spilling into a third column.
+// fits into the two columns of the page without spilling into a third column,
+// and no song line is wider than its column (i.e. would have to wrap).
 async function fitFontSize(page) {
 	return page.evaluate(
 		(min, max) => {
 			const el = document.getElementById('page');
+			const lines = [...document.querySelectorAll('#song .cmLine')];
 			const fits = (px) => {
 				el.style.setProperty('--fs', `${px}px`);
-				return el.scrollWidth <= el.clientWidth + 1;
+				return (
+					el.scrollWidth <= el.clientWidth + 1 &&
+					lines.every((line) => line.scrollWidth <= line.clientWidth + 1)
+				);
 			};
 			let lo = min * 4;
 			let hi = max * 4;
