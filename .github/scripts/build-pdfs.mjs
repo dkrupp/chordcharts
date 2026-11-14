@@ -28,6 +28,15 @@ const MIN_FONT_PX = 6;
 const MAX_FONT_PX = 40;
 const MARGIN_MM = 10;
 
+// chord-mark renderSong() options
+const RENDER_OPTIONS = {
+	alignBars: false,
+	alignChordsWithLyrics: true,
+	autoRepeatChords: true,
+	expandSectionCopy: true,
+	chartType: 'all', // lyrics and chords
+};
+
 function findCmFiles(dir) {
 	const files = [];
 	for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -78,6 +87,17 @@ html, body { margin: 0; padding: 0; }
 	#page { margin: 10mm auto; padding: ${MARGIN_MM}mm; background: white; box-shadow: 0 0 4mm rgba(0, 0, 0, 0.3); }
 }
 .cmLine, .cmChordLyricLine { break-inside: avoid; }
+/* Colors: bold black chords, grey lyrics, section labels colored by section type. */
+.cmChordLine { color: #000; }
+.cmChordSymbol { font-weight: bold; }
+.cmLyricLine { color: #666; }
+.cmSectionLabel { color: #34495e; }
+.cmSection-Intro .cmSectionLabel, .cmSection-Outro .cmSectionLabel { color: #00796b; }
+.cmSection-Verse .cmSectionLabel { color: #1f5fbf; }
+.cmSection-Pre .cmSectionLabel { color: #b35900; }
+.cmSection-Chorus .cmSectionLabel { color: #c0392b; }
+.cmSection-Bridge .cmSectionLabel { color: #7b3fa0; }
+.cmSection-Solo .cmSectionLabel { color: #1e7d32; }
 /* Lines never wrap; fitFontSize() rejects font sizes where a line overflows its column. */
 #song .cmLine, #song .cmLine * { white-space: pre; }
 #song .cmChordLyricLine { flex-wrap: nowrap; }
@@ -140,10 +160,14 @@ try {
 			const source = fs.readFileSync(file, 'utf8');
 			await page.setContent(buildHtml(titleCase(songName), titleCase(artistDir)), { waitUntil: 'load' });
 			await page.addScriptTag({ path: chordMarkBundle });
-			await page.evaluate((src) => {
-				const { parseSong, renderSong } = window['chord-mark'];
-				document.getElementById('song').innerHTML = renderSong(parseSong(src));
-			}, source);
+			await page.evaluate(
+				(src, options) => {
+					const { parseSong, renderSong } = window['chord-mark'];
+					document.getElementById('song').innerHTML = renderSong(parseSong(src), options);
+				},
+				source,
+				RENDER_OPTIONS
+			);
 			const { fontSize, fits } = await fitFontSize(page);
 			const baseName = `${artistDir}-${songName}`;
 			await page.pdf({
