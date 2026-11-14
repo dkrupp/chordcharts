@@ -28,6 +28,15 @@ const MIN_FONT_PX = 6;
 const MAX_FONT_PX = 40;
 const MARGIN_MM = 10;
 
+// chord-mark renderSong() options
+const RENDER_OPTIONS = {
+	alignBars: false,
+	alignChordsWithLyrics: true,
+	autoRepeatChords: true,
+	expandSectionCopy: true,
+	chartType: 'all', // lyrics and chords
+};
+
 function findCmFiles(dir) {
 	const files = [];
 	for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -140,10 +149,14 @@ try {
 			const source = fs.readFileSync(file, 'utf8');
 			await page.setContent(buildHtml(titleCase(songName), titleCase(artistDir)), { waitUntil: 'load' });
 			await page.addScriptTag({ path: chordMarkBundle });
-			await page.evaluate((src) => {
-				const { parseSong, renderSong } = window['chord-mark'];
-				document.getElementById('song').innerHTML = renderSong(parseSong(src));
-			}, source);
+			await page.evaluate(
+				(src, options) => {
+					const { parseSong, renderSong } = window['chord-mark'];
+					document.getElementById('song').innerHTML = renderSong(parseSong(src), options);
+				},
+				source,
+				RENDER_OPTIONS
+			);
 			const { fontSize, fits } = await fitFontSize(page);
 			const baseName = `${artistDir}-${songName}`;
 			await page.pdf({
